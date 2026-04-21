@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     projectId: 'proj2026-aaf89',
     storageBucket: 'proj2026-aaf89.firebasestorage.app',
   );
+
 }

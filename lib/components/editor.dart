@@ -5,13 +5,13 @@ class Editor extends StatelessWidget {
   final String rotulo;
   final String hint;
   final IconData? icone;
-  final String? msgErro; // parâmetro para a mensagem de validação
+  final String? msgErro; // Parâmetro para a mensagem de validação
 
   Editor(this.controlador, this.rotulo, this.hint, [this.icone, this.msgErro]);
 
   @override
   Widget build(BuildContext context) {
-    // trocado o TextField por TextFormField
+    // Trocado de TextField para TextFormField para permitir validação
     return TextFormField(
       controller: controlador,
       style: TextStyle(fontSize: 18.0),
