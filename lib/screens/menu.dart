@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:projbase/screens/chat.dart';
 import './home.dart';
 import './livro_list.dart';
 import '../screens/login_or_register.dart';
@@ -21,7 +22,7 @@ class MenuOptions extends StatefulWidget {
 class MenuOptionState extends State<MenuOptions> {
   int paginaAtual = 0;
   PageController? pc;
-  List paginas = ["Home", "Login", "Login"];
+  List paginas = ["Home", "Login", "Chat", "Login"];
   String titulo = "Título APP";
   String _displayName = "";
 
@@ -89,7 +90,15 @@ class MenuOptionState extends State<MenuOptions> {
                         pc?.jumpToPage(1);
                       },
                     ),
-
+                    buildMenuItem(
+                      icon: Icons.book,
+                      text: 'Chat',
+                      onTap: () {
+                        setPaginaAtual(2);
+                        Navigator.pop(context);
+                        pc?.jumpToPage(2);
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -120,9 +129,9 @@ class MenuOptionState extends State<MenuOptions> {
                 icon: Icons.login,
                 text: 'Fazer Login',
                 onTap: () {
-                  setPaginaAtual(2);
+                  setPaginaAtual(3);
                   Navigator.pop(context);
-                  pc?.jumpToPage(2);
+                  pc?.jumpToPage(3);
                 },
                 color: Colors.redAccent,
               ),
@@ -136,6 +145,7 @@ class MenuOptionState extends State<MenuOptions> {
         children: [
           Home(),
           LivroList(),
+          ChatScreen(),
           LoginOrRegisterScreen()
         ],
         onPageChanged: setPaginaAtual,
