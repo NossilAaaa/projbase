@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
 
 class Home extends StatefulWidget {
@@ -28,12 +27,7 @@ class HomeState extends State<Home> {
                   child:
                   ClipOval(child: Image.asset('assets/logos/logo.jpg')),
                 ),
-                Text("Título APP",
-                    style: GoogleFonts.lobsterTwo(fontSize: 30,
-                        color: Colors.teal.shade900,
-                        shadows: [
-                          BoxShadow(color: Colors.black38, blurRadius: 10)
-                        ])),
+                Text("Título APP"),
                 const SizedBox(height: 10),
 
                 Text(

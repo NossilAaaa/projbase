@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projbase/screens/chat.dart';
+import 'package:projbase/screens/list_map.dart';
 import './home.dart';
 import './livro_list.dart';
 import '../screens/login_or_register.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/user.dart';
 import '../service/user_service.dart';
+import './map.dart';
 
 class MenuOptions extends StatefulWidget {
   User? user = null;
@@ -22,7 +23,7 @@ class MenuOptions extends StatefulWidget {
 class MenuOptionState extends State<MenuOptions> {
   int paginaAtual = 0;
   PageController? pc;
-  List paginas = ["Home", "Login", "Chat", "Login"];
+  List paginas = ["Home", "Login", "Chat", "Mapa", "Login"];
   String titulo = "Título APP";
   String _displayName = "";
 
@@ -32,8 +33,7 @@ class MenuOptionState extends State<MenuOptions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(titulo,
-            style: GoogleFonts.lobsterTwo(fontSize: 28, color: Colors.white)),
+        title: Text(titulo),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
@@ -91,12 +91,21 @@ class MenuOptionState extends State<MenuOptions> {
                       },
                     ),
                     buildMenuItem(
-                      icon: Icons.book,
+                      icon: Icons.chat,
                       text: 'Chat',
                       onTap: () {
                         setPaginaAtual(2);
                         Navigator.pop(context);
                         pc?.jumpToPage(2);
+                      },
+                    ),
+                    buildMenuItem(
+                      icon: Icons.map,
+                      text: 'Mapa',
+                      onTap: () {
+                        setPaginaAtual(3);
+                        Navigator.pop(context);
+                        pc?.jumpToPage(3);
                       },
                     ),
                   ],
@@ -146,6 +155,7 @@ class MenuOptionState extends State<MenuOptions> {
           Home(),
           LivroList(),
           ChatScreen(),
+          MapLista(),
           LoginOrRegisterScreen()
         ],
         onPageChanged: setPaginaAtual,

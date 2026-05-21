@@ -12,7 +12,7 @@ class MensagemDao {
     return _mensagens.orderBy('time').snapshots();
   }
 
-  // Método unificado para salvar texto ou imagem
+  // Método unificado para salvar texto
   Future<void> sendMessage({
     String? text,
     XFile? imgFile,
@@ -38,7 +38,7 @@ class MensagemDao {
     await _mensagens.add(data);
   }
 
-  // Isolamos a lógica complexa de upload
+  // upload
   Future<String> uploadImage(XFile imgFile) async {
     String imageUrl = "";
     try {

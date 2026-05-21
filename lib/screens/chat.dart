@@ -27,14 +27,14 @@ class ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  // Passamos essa função via callback para o ChatComposer
+  // Passa essa função para o ChatComposer
   void _handleSendMessage({String? text, XFile? imgFile}) async {
     if (_currentUser != null) {
       setState(() {
         _isLoading = true;
       });
 
-      // Se a foto do Firebase Auth estiver nula, criamos um avatar genérico (mesma lógica usada no registro)
+      // Se a foto do Firebase Auth estiver nula, criamos um avatar genérico
       String photoUrl = _currentUser?.photoURL ??
           'https://ui-avatars.com/api/?name=${_currentUser?.email}&background=E01C2F&color=fff';
 
